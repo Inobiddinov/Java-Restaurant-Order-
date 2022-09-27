@@ -5,19 +5,19 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) {
 
-
-        //int Session = scan.nextInt();
         boolean choosingSession;
         int Session;
-
+                
+        do {
         Scanner scan = new Scanner(System.in);
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); //Calling Local time using the DateFormat
         Date date = new Date();
         System.out.println("Welcome to Yummy steamboat Buffet Restaurant");
         System.out.println("Ordered on " + (formatter.format(date)));
         System.out.println("1. Lunch session");
         System.out.println("2. Dinner session");
-
+        
+        //Creeating keyword for Calculating number of Buyer
         double adult = 0;
         double child = 0;
         String sessions = null;
@@ -25,7 +25,9 @@ public class Main {
         int childs =0;
         int family =0;
 
-
+        
+        //I am going to use Do while loop for Return back if the user input invalid value.
+        // User required to input session 1 or 2 if user input value x<1 || x>2 this loop ask the user to input valid value which are  1--2.
         do {
             System.out.println("Enter a meal session (1 or 2): ");
             Session= scan.nextInt();
@@ -56,7 +58,7 @@ public class Main {
 
         }   while (!(choosingSession));
 
-
+        //Session is done now We have to ask user input number of Child or Adult
         System.out.print("Enter number of adult: ");
          adults = scan.nextInt();
         System.out.print("Enter number of child: ");
@@ -65,7 +67,8 @@ public class Main {
         Boolean SoupMenu;
         int SOUP;
         String choosenSoup=null;
-
+        
+        //In this part user have to choose soup option and there are only 3 option avaible. If user input value which is x<1 or x>2 it will reask the user input valid value.
         Scanner Soup = new Scanner(System.in);
         System.out.println("1. Chicken soup (Free of charge) ");
         System.out.println("2. Herbal soup (+RM2 per Adult) ");
@@ -103,6 +106,7 @@ public class Main {
         Scanner anyThingElse = new Scanner(System.in);
         int adult1 =0;
         int  child1=0;
+        // This part ask the user if he/she want to add buyer more.
         do{
             System.out.println("Anything else You would like to add(1-yes 2-no):  " );
             addon = anyThingElse.nextInt();
@@ -122,7 +126,8 @@ public class Main {
                 Addon = false;
             }
         }  while (!(Addon));
-
+        
+        // This part ask the user if he/she want to add more consumer.
         Boolean Addon1;
         int addon1;
         int adult2 =0;
@@ -146,32 +151,26 @@ public class Main {
                 Addon1 = false;
             }
         }  while (!(Addon1));
+        
+            
 
-
-     //   int familyPackage = 0;
-        int numOfAdults = (adults +adult1+adult2);
-        int numOfChildren =(childs+child1+adult2);
-        //if (numOfChildren==2 && numOfAdults==2){
-           //familyPackage = family;
-      //  }
-
+        int numOfAdults = (adults +adult1+adult2); //calculating the total number of Adults
+        int numOfChildren =(childs+child1+adult2); //Calculating the Total number of Child
+        
+        //This is for Calculate total spending for food per adult && child    
         double sumAdults =(adults + (adult1)+adult2) *adult;
         double sumChildren= (childs+(child1)+childs) *child;
         double total = (sumAdults + sumChildren +SOUP);
         double sst = 0;
         double totalOver200 =0;
-
+        
+        //This part for calculating the SST.
         if (sst<total){
             sst=total/100*6;
         }
 
 
-
-
-
-
-
-
+        //This part is final part which will show the user how many child or adult are there and total sum of Food.
         System.out.println("========================================================= ");
         System.out.println("Ordered on " + (formatter.format(date)));
         System.out.println(sessions);
@@ -213,7 +212,7 @@ public class Main {
         boolean Neworder;
         System.out.print("Do you want to add new order? (1-yes  2-no):  ");
         neworder= scan.nextInt();
-       do {
+       
            if (neworder==1){
                Neworder=true;
                new Main();
